@@ -1,0 +1,10 @@
+/menv
+__pycache__
+.env
+users.csv
+test.ipynb
+.env copy
+todo
+messages.py
+commands.py
+logs.log
