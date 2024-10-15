@@ -18,6 +18,6 @@ class Config:
 
 config = Config(
     tg_bot=TgBot(
-        token=getenv('LIP_LOP_BOT'),
+        token=getenv('BOT_TOKEN'),
         admins_ids=eval(getenv('ADMINS_IDS'))),
     stickers=stickers)
