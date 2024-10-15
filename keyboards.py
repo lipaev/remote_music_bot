@@ -1,21 +1,13 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.filters.callback_data import CallbackData
+from config import config
 
 class KeyCallback(CallbackData, prefix='button'):
     button: str
     loop: int
 
-b = {'⏪': ('prevtrack', 1),
-         '⏯': ('playpause', 1),
-         '⏩': ('nexttrack', 1),
-         '🔊 ⬆️': ('volumedown', 4),
-         '🔉 ⬇️': ('volumeup', 4),
-         '⬅️': ('left', 1),
-         '➡️': ('right', 1),
-         'J': ('j', 1),
-         'L': ('l', 1),
-         'K': ('k', 1)}
+b = config.b
 
 def keyboard_music() -> InlineKeyboardMarkup:
 
