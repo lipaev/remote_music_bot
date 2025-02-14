@@ -13,10 +13,17 @@ b = {'⏪': ('prevtrack', 1),
          '🔉 ⬇️': ('volumedown', 4),
          '⬅️': ('left', 1),
          '➡️': ('right', 1),
-         'J': ('j', 1),
-         'L': ('l', 1),
+         '⟪J': ('j', 1),
          'K': ('k', 1),
-         'F': ('f', 1)}
+         'L⟫': ('l', 1),
+         '[F]': ('f', 1)}
+
+relingo = {'Shift + ⬅️': ('shift;;;left', 1),
+           'Pause ⏯': ('playpause', 1),
+        'Shift + ➡️': ('shift;;;right', 1),
+         '🔊 ⬆️': ('volumeup', 4),
+         '🔉 ⬇️': ('volumedown', 4),
+         '[F]': ('f', 1)}
 
 @dataclass
 class TgBot:
@@ -28,10 +35,12 @@ class Config:
     tg_bot: TgBot
     stickers: list[str]
     b: dict[str, tuple[str, int]]
+    relingo: dict[str, tuple[str, int]]
 
 config = Config(
     tg_bot=TgBot(
         token=getenv('BOT_TOKEN'),
         admins_ids=eval(getenv('ADMINS_IDS'))),
     stickers=stickers,
-    b=b)
+    b=b,
+    relingo=relingo)
