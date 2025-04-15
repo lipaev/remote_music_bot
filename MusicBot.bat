@@ -1,4 +1,4 @@
 @echo off
-cd C:\repos\music_bot
-call C:\repos\music_bot\menv\Scripts\activate
-python C:\repos\music_bot\main.py
+cd %~dp0
+call %~dp0menv\Scripts\activate
+python %~dp0main.py
