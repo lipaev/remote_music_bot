@@ -9,8 +9,8 @@ stickers = ['CAACAgIAAxkBAAIEimcBOTDVRItWl1a4Gm0yV2jRhI2HAAKJAAMWQmsKRsvaWiyCsI4
 b = {'⏪': ('prevtrack', 1),
          '⏯': ('playpause', 1),
          '⏩': ('nexttrack', 1),
-         '🔊 ⬆️': ('volumeup', 4),
-         '🔉 ⬇️': ('volumedown', 4),
+         '🔊 ⬆️': ('volumeup', 2),
+         '🔉 ⬇️': ('volumedown', 2),
          '⬅️': ('left', 1),
          '➡️': ('right', 1),
          '⟪J': ('j', 1),
@@ -21,8 +21,8 @@ b = {'⏪': ('prevtrack', 1),
 relingo = {'Shift + ⬅️': ('shift;;;left', 1),
            'Pause ⏯': ('playpause', 1),
         'Shift + ➡️': ('shift;;;right', 1),
-         '🔊 ⬆️': ('volumeup', 4),
-         '🔉 ⬇️': ('volumedown', 4),
+         '🔊 ⬆️': ('volumeup', 2),
+         '🔉 ⬇️': ('volumedown', 2),
          '[F]': ('f', 1)}
 
 @dataclass
