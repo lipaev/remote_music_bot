@@ -23,7 +23,10 @@ relingo = {'Shift + ⬅️': ('shift;;;left', 1),
         'Shift + ➡️': ('shift;;;right', 1),
          '🔊 ⬆️': ('volumeup', 2),
          '🔉 ⬇️': ('volumedown', 2),
-         '[F]': ('f', 1)}
+         '[F]': ('f', 1),
+         'F11': ('f11', 1),
+         '⬆️': ('up', 9),
+         '⬇️': ('down', 9)}
 
 @dataclass
 class TgBot:

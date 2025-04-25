@@ -8,7 +8,7 @@ from aiogram.types import Message, CallbackQuery, Message, BotCommand
 
 from config import config
 from filters import WritingOnFile, IsAdmin
-from keyboards import keyboard_music, KeyCallback, keyboard_relingo
+from keyboards import keyboard_music, KeyCallback, keyboard_relingo, keyboard_relingo_reply
 
 bot = Bot(config.tg_bot.token)
 dp = Dispatcher()
@@ -24,14 +24,27 @@ logging.basicConfig(level=logging.DEBUG,
 
 
 async def message_music(message: Message):
-    await bot.send_chat_action(message.chat.id, "typing")
     await message.delete()
     await message.answer_sticker(choice(config.stickers), reply_markup=keyboard_music())
 
 async def message_relingo(message: Message):
-    await bot.send_chat_action(message.chat.id, "typing")
     await message.delete()
     await message.answer_sticker(choice(config.stickers), reply_markup=keyboard_relingo())
+
+async def message_relingo_reply(message: Message):
+    await message.delete()
+    await message.answer_sticker(choice(config.stickers), reply_markup=keyboard_relingo_reply())
+
+async def handle_relingo_reply_button(message: Message):
+    await message.delete()
+    text = message.text
+    # Проверяем, что текст — одна из кнопок relingo (без первых трёх)
+    keys = list(config.relingo.keys())[3:]
+    if text in keys:
+        button, loop = config.relingo[text]
+        pyautogui.press(button.split(';;;'), loop)
+    else:
+        await message.answer("Неизвестная команда.")
 
 async def callback_music(query: CallbackQuery, callback_data: KeyCallback):
     pyautogui.press(callback_data.button.split(';;;'), callback_data.loop)
@@ -43,14 +56,18 @@ async def set_main_menu(bot: Bot):
         BotCommand(command='/music',
                    description='Musical buttons'),
         BotCommand(command='/relingo',
-                   description='Relingo buttons')
+                   description='Relingo buttons'),
+        BotCommand(command='/reply',
+                   description='Keyboard buttons')
     ]
 
     await bot.set_my_commands(main_menu_commands)
 
 dp.callback_query.register(callback_music, KeyCallback.filter(F.button.in_([*buttons_names_b, *buttons_names_relingo])))
+dp.message.register(handle_relingo_reply_button, F.text.in_(list(config.relingo.keys())[3:]), IsAdmin())
 dp.message.register(message_music, Command(commands=["music", 'start']), IsAdmin())
 dp.message.register(message_relingo, Command(commands=["relingo"]), IsAdmin())
+dp.message.register(message_relingo_reply, Command(commands=["reply"]), IsAdmin())
 dp.startup.register(set_main_menu)
 
 if __name__ == "__main__":
