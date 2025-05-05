@@ -28,6 +28,12 @@ relingo = {'Shift + ⬅️': ('shift;;;left', 1),
          '⬆️': ('up', 9),
          '⬇️': ('down', 9)}
 
+movies = {'⬅️': ('left', 1),
+        '➡️': ('right', 1),
+        '⟪J': ('j', 1),
+        'L⟫': ('l', 1),
+        '⏯': ('playpause', 1)}
+
 @dataclass
 class TgBot:
     token: str
@@ -39,6 +45,7 @@ class Config:
     stickers: list[str]
     b: dict[str, tuple[str, int]]
     relingo: dict[str, tuple[str, int]]
+    movies: dict[str, tuple[str, int]]
 
 config = Config(
     tg_bot=TgBot(
@@ -46,4 +53,5 @@ config = Config(
         admins_ids=eval(getenv('ADMINS_IDS'))),
     stickers=stickers,
     b=b,
-    relingo=relingo)
+    relingo=relingo,
+    movies=movies)

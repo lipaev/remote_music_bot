@@ -8,3 +8,6 @@ todo
 messages.py
 commands.py
 logs.log
+build
+dist
+*.spec

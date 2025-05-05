@@ -9,6 +9,7 @@ class KeyCallback(CallbackData, prefix='button'):
 
 b = config.b
 relingo = config.relingo
+mov = config.movies
 
 def keyboard_music() -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
@@ -56,4 +57,12 @@ def keyboard_relingo_reply() -> ReplyKeyboardMarkup:
         rows.append([KeyboardButton(text=keys[i]), KeyboardButton(text=keys[i+1])])
     for i in range(4, len(keys)):
         rows.append([KeyboardButton(text=keys[i])])
+    return ReplyKeyboardMarkup(keyboard=rows, resize_keyboard=False)
+
+def keyboard_movies_reply() -> ReplyKeyboardMarkup:
+    keys = list(mov.keys())
+    rows = []
+    rows.append([KeyboardButton(text=keys[0]), KeyboardButton(text=keys[1])])
+    rows.append([KeyboardButton(text=keys[2]), KeyboardButton(text=keys[3])])
+    rows.append([KeyboardButton(text=keys[4])])
     return ReplyKeyboardMarkup(keyboard=rows, resize_keyboard=False)
