@@ -16,15 +16,15 @@ def keyboard_music() -> InlineKeyboardMarkup:
 
     builder.row(*[
         InlineKeyboardButton(text=i, callback_data=KeyCallback(button=b[i][0], loop=b[i][1]).pack())
-        for i in list(b.keys())[:3]
+        for i in list(b)[:3]
     ])
     builder.row(*[
         InlineKeyboardButton(text=i, callback_data=KeyCallback(button=b[i][0], loop=b[i][1]).pack())
-        for i in list(b.keys())[3:7]
+        for i in list(b)[3:7]
     ])
     builder.row(*[
         InlineKeyboardButton(text=i, callback_data=KeyCallback(button=b[i][0], loop=b[i][1]).pack())
-        for i in list(b.keys())[7:11]
+        for i in list(b)[7:11]
     ])
 
     return builder.as_markup()
@@ -34,23 +34,23 @@ def keyboard_relingo() -> InlineKeyboardMarkup:
 
     builder.row(*[
         InlineKeyboardButton(text=i, callback_data=KeyCallback(button=relingo[i][0], loop=relingo[i][1]).pack())
-        for i in list(relingo.keys())[:3]],
+        for i in list(relingo)[:3]],
                 width=1)
 
     builder.row(*[
         InlineKeyboardButton(text=i, callback_data=KeyCallback(button=relingo[i][0], loop=relingo[i][1]).pack())
-        for i in list(relingo.keys())[3:7]
+        for i in list(relingo)[3:7]
         ])
 
     builder.row(*[
         InlineKeyboardButton(text=i, callback_data=KeyCallback(button=relingo[i][0], loop=relingo[i][1]).pack())
-        for i in list(relingo.keys())[7:]],
+        for i in list(relingo)[7:]],
                 width=1)
 
     return builder.as_markup()
 
 def keyboard_relingo_reply() -> ReplyKeyboardMarkup:
-    keys = list(relingo.keys())[3:]  # без первых трёх
+    keys = list(relingo)[3:]  # без первых трёх
     rows = []
     # Первые два ряда по 2 кнопки, затем по одной в каждом ряду
     for i in range(0, min(4, len(keys)), 2):
@@ -60,7 +60,7 @@ def keyboard_relingo_reply() -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(keyboard=rows, resize_keyboard=False)
 
 def keyboard_movies_reply() -> ReplyKeyboardMarkup:
-    keys = list(mov.keys())
+    keys = list(mov)
     rows = []
     rows.append([KeyboardButton(text=keys[0]), KeyboardButton(text=keys[1])])
     rows.append([KeyboardButton(text=keys[2]), KeyboardButton(text=keys[3])])
