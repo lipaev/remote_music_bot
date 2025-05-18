@@ -3,7 +3,7 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.filters.callback_data import CallbackData
 from config import config
 
-class KeyCallback(CallbackData, prefix='button'):
+class KeyCallback(CallbackData, prefix='button', sep=config.cipher):
     button: str
     loop: int
 

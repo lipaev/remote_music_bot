@@ -46,6 +46,7 @@ class Config:
     b: dict[str, tuple[str, int]]
     relingo: dict[str, tuple[str, int]]
     movies: dict[str, tuple[str, int]]
+    cipher: str
 
 config = Config(
     tg_bot=TgBot(
@@ -54,4 +55,5 @@ config = Config(
     stickers=stickers,
     b=b,
     relingo=relingo,
-    movies=movies)
+    movies=movies,
+    cipher=getenv('CIPHER'))
